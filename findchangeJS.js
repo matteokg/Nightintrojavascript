@@ -1,0 +1,6 @@
+var change = prompt('please enter the amount you would like changed')
+var num = parseFloat(change)
+console.log(parseInt(num / 25) + ' quarters, or ')
+console.log(parseInt(num / 10) + ' dimes, or ')
+console.log(parseInt(num / 5) + ' nickels, or ')
+console.log(parseInt(num / 1) + ' pennies, but who would want that?')
