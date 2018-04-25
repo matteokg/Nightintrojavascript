@@ -37,35 +37,37 @@ class Atm {
 }
 var atm = new Atm()
 var validInputs = ['deposit', 'd', 'withdraw', 'w', 'check balance', 'b', 'history', 'h', 'exit', 'x']
-while (true) {
   while (true) {
     var op = prompt('What would you like to do? \n((d)eposit, (w)ithdraw, check (b)alance, check (h)istory, or e(x)it): ')
-    if (['x', 'exit'].includes(op)) {
-      console.log("aight pce dude")
+    if (op.startsWith('x')) {
+      console.log('aight pce dude')
       break
     }
     if (validInputs.includes(op)) {
-      while (true) {
-        if (op.startsWith('d')) {
-          var ui = prompt('how much would you like to' + op)
-          var amount = parseInt(ui)
-          atm.deposit(amount)
-          break
-        }
-        else if (op.startsWith('w')) {
-          atm.withdraw(amount)
-          break
-        }
-        else if (op.startsWith('b')) {
-          atm.checkBalance()
-        }
-        else if (op.startsWith('h')) {
-          console.log(this.transactions)
-        }
+    while (true) {
+      if (op.startsWith('d')) {
+        var ui = prompt('how much would you like to' + op)
+        let amount = parseInt(ui)
+        atm.deposit(amount)
+        break
+      }
+      else if (op.startsWith('w')) {
+        var inp = prompt('how much would you like to withdraw?')
+        let amount = parseInt(inp)
+        atm.withdraw(amount)
+        break
+      }
+      else if (op.startsWith('b')) {
+        atm.checkBalance()
+        break
+      }
+      else if (op.startsWith('h')) {
+        console.log(atm.printTransactions)
+        break
       }
     }
-    else {
-      console.log('not valid input, try again you idiot')
-    }
+  }
+  else {
+    console.log('not valid input, try again you idiot')
   }
 }
