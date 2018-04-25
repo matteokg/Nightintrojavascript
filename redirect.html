@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> redirect </title>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <h1 id="count"></h1>
+    <button id="po" type="button"> 
+        click here to go somewhere else</button>
+
+
+    <script>
+        var randomSites = ['http://onetinyhand.com/', 'http://www.dragomirsdiary.com/2011/08/hello-diary.html', 'https://codepen.io/akm2/full/rHIsa', 'http://llamafont.com/'];
+
+        var newSite = randomSites[Math.floor(Math.random() * randomSites.length)];
+
+
+       
+
+        $('#po').click(function() {
+            $('#po').hide();
+            $('#count').show();
+            setTimeout("window.location.href = newSite;", 5000);
+            var counter = 5;
+            setInterval(function() {
+                counter--;
+                if (counter >= 0) {
+                    span = document.getElementById("count");
+                    span.innerHTML = counter;
+                }
+            }, 1000);
+
+        });
+    </script>
+</body>
+
+</html>
