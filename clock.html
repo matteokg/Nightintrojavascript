@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <title> clock </title>
+</head>
+
+<body>
+    <h1 id="clock"></h1>
+    <button id="stopwatchBtn" type="button">Stopwatch</button>
+    <button id="timer" type="button">Timer</button>
+    <div id="stopwatch">
+        <div id="timer2"><span id="time" class="value">0</span> ms</div>
+        <button id="start" type="button"> Start</button>
+        <button id="lap" type="button">Lap</button>
+        <button id="stop" type="button">Stop</button>
+        <div id="lapTime"></div>
+    </div>
+    <script>
+        var myVar = setInterval(myTimer, 1000);
+        var stopW = new Date(0, 0, 0, 0)
+        var lapTime = []
+
+        function myTimer() {
+            var d = new Date();
+            document.getElementById("clock").innerHTML = d.toLocaleTimeString();
+        }
+
+        $(document).ready(function() {
+            $('#stopwatch').hide();
+            $('#stopwatchBtn').click(function() {
+                $('#stopwatchBtn').hide();
+                $('#stopwatch').show();
+                $('#clock').hide();
+                $('#timer').hide();
+                $('#stop').show();
+            });
+            $('#start').click(function() {
+                var interval = setInterval(updateDisplay, 100);
+
+                function updateDisplay() {
+                    var value = parseInt($('.value').text(), 10);
+                    value++;
+                    $('.value').text(value);
+                }
+                $('#lap').click(function() {
+                    let time = document.getElementById('time').innerHTML;
+                    lapTime.push(time);
+                    console.log(lapTime);
+                    var ul = document.createElement(ul);
+                    document.getElementById('lapTime').appendChild(ul);
+                    var li = document.createElement('li');
+                    ul.appendChild(li);
+                    li.innerHTML += time;
+
+                });
+                
+                $('#stop').click(function() {
+                    console.log('click');
+                    clearInterval(interval);
+                });
+
+            });
+
+
+        });
+    </script>
+</body>
+
+</html>
