@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<link rel="stylesheet" ref="styles.css">
+	<title> hackertyper </title>
+</head>
+
+<body>
+
+    <div id=hacker>
+    <p id=hack></p>
+    </div>
+
+</body>
+
+<script>
+
+var code = "this is basic hacker code from me to you killa kam in the spot killa kam make it hot"
+var a = $("#hack")
+
+var i = 0
+
+
+document.onkeypress = function(){
+console.log("hello")
+  a.append(code.slice(i, i+3))
+    i += 3;
+    if (i > code.length) {
+        i = 0;
+    }
+};
+    
+</script>
+</html>
